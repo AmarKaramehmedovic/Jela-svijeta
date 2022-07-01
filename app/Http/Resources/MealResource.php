@@ -19,9 +19,18 @@ class MealResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'status' => $this->status,
-            'category' => $this->category,
-            'tags' => $this->tags,
-            'ingredients' => $this->ingredients
+            'category' => $this
+                ->when(str_contains($request->with, 'category'),
+                    $this->category
+                ),
+            'tags' => $this
+                ->when(str_contains($request->with, 'tags'),
+                    $this->tags
+                ),
+            'ingredients' => $this
+                ->when(str_contains($request->with, 'ingredients'),
+                    $this->ingredients
+                ),
         ];
     }
 }

@@ -20,8 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/meals', [MealApiController::class, 'index']);
-Route::get('/meals', [MealApiController::class, 'showPerPage']);
-//Route::get('/meals', [MealApiController::class, 'showByCategory']);
-
-//Route::apiResource('/meals', MealApiController::class);
+//Route::get('/meals', [MealApiController::class, 'index']);
+//Route::get('/meals', [MealApiController::class, 'filter']);
+Route::apiResource('/meals', MealApiController::class);
